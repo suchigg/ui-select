@@ -57,7 +57,8 @@ uis.directive('uiSelect',
             $select.skipFocusser = skipFocusser !== undefined ? skipFocusser : uiSelectConfig.skipFocusser;
         });
 
-        $select.onSelectCallback = $parse(attrs.onSelect);
+        $select.addFunctionCallback = $parse(attrs.addFunction);
+        $select.onSelectCallback = $parse(attrs.onSelect);        
         $select.onRemoveCallback = $parse(attrs.onRemove);
 
         //Set reference to ngModel from uiSelectCtrl
@@ -227,6 +228,9 @@ uis.directive('uiSelect',
           if (transcludedNoChoice.length == 1) {
             element.querySelectorAll('.ui-select-no-choice').replaceWith(transcludedNoChoice);
           }
+
+
+
         });
 
         // Support for appending the select field to the body when its open
@@ -361,7 +365,7 @@ uis.directive('uiSelect',
         };
 
         var opened = false;
-        
+
         scope.calculateDropdownPos = function() {
           if ($select.open) {
             dropdown = angular.element(element).querySelectorAll('.ui-select-dropdown');

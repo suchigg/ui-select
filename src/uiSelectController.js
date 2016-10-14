@@ -44,6 +44,7 @@ uis.controller('uiSelectCtrl',
   ctrl.$filter = $filter;
   ctrl.$element = $element;
 
+
   // Use $injector to check for $animate and store a reference to it
   ctrl.$animate = (function () {
     try {
@@ -372,6 +373,12 @@ uis.controller('uiSelectCtrl',
   };
 
 
+  ctrl.addOption = function(){
+    $timeout(function(){      
+      ctrl.addFunctionCallback($scope, {});
+    });
+  };
+
   // When the user selects an item with ENTER or clicks the dropdown
   ctrl.select = function(item, skipFocusser, $event) {
     if (item === undefined || !_isItemDisabled(item)) {
@@ -423,7 +430,7 @@ uis.controller('uiSelectCtrl',
             ctrl.close(skipFocusser);
             return;
           }
-        }        
+        }
         _resetSearchInput();
         $scope.$broadcast('uis:select', item);
 
