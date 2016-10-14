@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.19.3 - 2016-08-17T06:16:42.140Z
+ * Version: 0.19.4 - 2016-10-14T07:17:02.501Z
  * License: MIT
  */
 
@@ -26,7 +26,8 @@
 }
 
 
-.ui-select-choices-row:hover {
+.ui-select-choices-row:hover,
+.ui-select-static-actions-row:hover {
   background-color: #f5f5f5;
 }
 
@@ -100,8 +101,13 @@ body > .select2-container.open {
 }
 
 /* Fix input width for Selectize theme */
-.selectize-control > .selectize-input > input {
+.selectize-control.single > .selectize-input > input {
   width: 100%;
+}
+
+/* Fix line break when there's at least one item selected with the Selectize theme */
+.selectize-control.multi > .selectize-input > input {
+  margin: 0 !important;
 }
 
 /* Fix dropdown width for Selectize theme */
@@ -256,7 +262,8 @@ body > .ui-select-bootstrap.open {
   border-right: 1px solid #428bca;
 }
 
-.ui-select-bootstrap .ui-select-choices-row>span {
+.ui-select-bootstrap .ui-select-choices-row>span,
+.ui-select-bootstrap .ui-select-static-actions-row>span{
     cursor: pointer;
     display: block;
     padding: 3px 20px;
@@ -267,13 +274,18 @@ body > .ui-select-bootstrap.open {
     white-space: nowrap;
 }
 
-.ui-select-bootstrap .ui-select-choices-row>span:hover, .ui-select-bootstrap .ui-select-choices-row>span:focus {
+.ui-select-bootstrap .ui-select-choices-row>span:hover,
+.ui-select-bootstrap .ui-select-choices-row>span:focus,
+.ui-select-bootstrap .ui-select-static-actions-row>span:hover,
+.ui-select-bootstrap .ui-select-static-actions-row>span:focus {
     text-decoration: none;
     color: #262626;
     background-color: #f5f5f5;
 }
 
-.ui-select-bootstrap .ui-select-choices-row.active>span {
+
+.ui-select-bootstrap .ui-select-choices-row.active>span,
+.ui-select-bootstrap .ui-select-static-actions-row.active>span {
     color: #fff;
     text-decoration: none;
     outline: 0;
@@ -281,7 +293,9 @@ body > .ui-select-bootstrap.open {
 }
 
 .ui-select-bootstrap .ui-select-choices-row.disabled>span,
-.ui-select-bootstrap .ui-select-choices-row.active.disabled>span {
+.ui-select-bootstrap .ui-select-choices-row.active.disabled>span,
+.ui-select-bootstrap .ui-select-static-actions-row.disabled>span,
+.ui-select-bootstrap .ui-select-static-actions-row.active.disabled>span  {
     color: #777;
     cursor: not-allowed;
     background-color: #fff;
